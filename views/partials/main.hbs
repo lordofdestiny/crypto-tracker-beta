@@ -1,0 +1,29 @@
+<div class="conainer-fluid push">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2 d-flex flex-column align-items-center">
+            <h2 class="blue">Change Currency</h2>
+            <hr />
+            <div class="list-group  w-100">
+                {{#each coinData}}
+                    <button type="button"
+                        class="list-group-item list-group-item-action image-button {{#if (equals name "BTC")}}active{{/if}} changeCoin"
+                        style="background-image: url('{{img}}');" data-coin="{{name}}">
+                        {{name}}
+                    </button>
+                {{/each}}
+            </div>
+            <br />
+            <h2 class="blue">Value of <span id="coinName">{{coinData.0.name}}</span>:</h2>
+            <h3 id="coinValue" class="blue">$ {{formatCurrency coinData.0.USD}}</h3>
+        </div>
+        <div class="col-6">
+            <div class="conainer">
+                <div class="col-10">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
