@@ -1,4 +1,5 @@
 sessionStorage.setItem("coin", "BTC");
+sessionStorage.setItem("currency", "USD");
 
 const colors = {
   BTC: "rgb(255, 123, 0)",
@@ -22,7 +23,6 @@ function addLine(chart, data) {
     data: [],
     borderColor: colors[coin]
   });
-  console.log(chart.data.datasets);
   chart.data.datasets.push(newDataset);
   data.forEach(point => {
     addData(chart, point);
