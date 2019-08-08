@@ -33,7 +33,7 @@ function addData(chart, point) {
   const { time, value } = point;
   chart.data.labels.push(time);
   chart.data.datasets.forEach(dataset => {
-    dataset.data.push(value);
+    dataset.data.push(value.toFixed(2));
   });
   chart.update();
 }

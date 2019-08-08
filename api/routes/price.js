@@ -27,7 +27,7 @@ router.get("/data", async (req, res) => {
       const { time, close, open } = day;
       return {
         timestamp: time,
-        value: ((open + close) / 2).toPrecision(3)
+        value: (open + close) / 2
       };
     });
 

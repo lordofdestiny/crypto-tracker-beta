@@ -2,17 +2,17 @@ const buttons = Array.from(document.getElementsByClassName("changeCoin"));
 
 buttons.forEach(button => {
   button.addEventListener("click", async function() {
+    console.log(this);
     if (!this.classList.contains("active")) {
       buttons.forEach(button => {
         button.classList.remove("active");
       });
       this.classList.add("active");
+
       const coin = this.attributes["data-coin"].value;
       sessionStorage.setItem("coin", coin);
       removeLine(myChart);
       newLine(myChart);
-
-      const currency = sessionStorage.getItem("currency");
 
       await updateCoin();
     }

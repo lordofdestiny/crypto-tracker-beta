@@ -1,13 +1,13 @@
-<div class="conainer-fluid push">
+<div class="conainer-fluid">
     <div class="row">
         <div class="col-1"></div>
         <div class="col-2 d-flex flex-column align-items-center">
             <h2 class="blue">Change Currency</h2>
             <hr />
-            <div class="list-group  w-100">
+            <div class="list-group w-100">
                 {{#each coinData}}
                     <button type="button"
-                        class="list-group-item list-group-item-action image-button {{#if (equals name "BTC")}}active{{/if}} changeCoin"
+                        class="list-group-item list-group-item-action image-button {{#if (equals name "BTC")}} active{{/if}} changeCoin"
                         style="background-image: url('{{img}}');" data-coin="{{name}}">
                         {{name}}
                     </button>

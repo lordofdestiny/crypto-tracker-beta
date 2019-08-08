@@ -11,18 +11,6 @@ body {
   text-align: right;
 }
 
-hr {
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  width: 100%;
-  border-color: #eeeeee -moz-use-text-color #ffffff;
-  border-style: solid none;
-  border-width: 1px 0;
-  margin: 0 0 10px;
-}
-
 .title {
   text-align: center;
   font-size: 3rem;
@@ -31,4 +19,8 @@ hr {
 
 .blue {
   color: #007bff;
+}
+
+.active:hover {
+  cursor: default;
 }
