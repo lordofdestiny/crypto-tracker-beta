@@ -12,7 +12,7 @@ const hbs = handlebars.create({
   extname: "hbs",
   defaultLayout: "layout",
   layoutsDir: path.join(__dirname, "views", "layouts"),
-  helpers: handlebarsHelpers
+  helpers: handlebarsHelpers,
 });
 
 const app = express();

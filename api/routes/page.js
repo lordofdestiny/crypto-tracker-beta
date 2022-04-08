@@ -9,34 +9,31 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const coinList = ["BTC", "ETH", "XRP", "LTC"];
   const currencyList = ["USD"];
-  const request = axios({
-    method: "get",
-    url: `${env.apiTarget()}/data/pricemulti`,
-    params: {
-      fsyms: coinList.join(","),
-      tsyms: currencyList.join(","),
-      extraParams: "cryptochart",
-      api_key: env.apiKey()
-    }
-  });
 
   try {
-    const response = await request;
-    const imgs = await images(coinList);
-
-    //merge response and images for easy use in hbs
-    const coinData = Object.keys(response.data).map(key => {
-      const obj = { name: key };
-      Object.assign(obj, response.data[key], imgs[key]);
-      return obj;
+    const { data } = await axios({
+      method: "get",
+      url: new URL("/data/pricemulti", env.apiTarget()).href,
+      params: {
+        fsyms: coinList.join(","),
+        tsyms: currencyList.join(","),
+        extraParams: "cryptochart",
+        api_key: env.apiKey(),
+      },
     });
+
+    const imgs = await images(coinList);
 
     res.render("index", {
       title: "Crypto Chart",
       bootstrap: true,
       chart: true,
-      coinData,
-      data: coinList
+      coinData: Object.keys(data).map((key) => ({
+        name: key,
+        ...data[key],
+        ...imgs[key],
+      })),
+      data: coinList,
     });
   } catch (error) {
     const { stack, message } = error;
